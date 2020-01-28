@@ -5,8 +5,12 @@ var app = require('./app');
 var port = 3700;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/portafolio')
-		.then(()=>{
+mongoose.connect('mongodb://localhost:27017/portafolio',{
+//current URL string parse(Deprecated)
+useUnifiedTopology: true,
+useNewUrlParser: true,
+}).then(()=>{
+
 			console.log("Conexión con base de datos con éxito...");
 			//Creación del servidor
 			app.listen(port, ()=>{
